@@ -1,0 +1,220 @@
+
+
+
+        <app-header></app-header>
+  
+                            <ng-template #content5 >
+                                    <div class="modal-header">
+                                      <h4 class="modal-title" id="modal-basic-title" style="color: rgb(236, 9, 9) ">Erreur</h4>
+                                      <button type="button" class="close pull-right" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
+                                    <div class="modal-body">
+                                      <form>
+                                        <div class="form-group">
+                                      <h3 style="color: rgb(12, 11, 11) ">Vous n'avez pas d'argent dans votre compte. </h3>
+                                      <h3 style="color: rgb(12, 11, 11)  " >Vérifier Votre Solde s'il vous plait.</h3>
+                                        </div>
+                                      </form>
+                                    </div>
+                                 
+                                  </ng-template>
+
+
+                            
+        <div  class="gray-bg">
+   
+        <div class="row wrapper border-bottom white-bg page-heading">
+             
+                <div class="col-lg-2">
+
+                </div>
+            </div>
+        <div class="wrapper wrapper-content ">
+            <div class="row">
+                    <div class="col-lg-6">
+
+                    <div class="ibox-content">
+                            <div class="row">
+                                <span class="label label-success pull-right"><h1><a [routerLink]="['/Recuperer',id]">+</a></h1></span>
+                                        
+                                <div class="ibox-content">
+                             
+                                        <h3 class="no-margins"><a [routerLink]="['/Recuperer',id]">Recupérer Les Versements Non Validéés</a></h3>
+                                 
+                                  <div>
+                                      <br><br>
+                                  </div>
+                                </div>
+                            
+                            </div>
+                        </div>
+                        </div>
+                        <div class="col-lg-6">
+
+                            <div class="ibox-content">
+                                    <div class="row">
+                                        <span class="label label-success pull-right"><h1><a [routerLink]="['/Charger',id]">+</a></h1></span>
+                                                
+                                        <div class="ibox-content">
+                                     
+                                                <h3 class="no-margins"><a [routerLink]="['/Charger',id]">Demander De La Monnaie</a></h3>
+                                         
+                                          <div>
+                                              <br><br>
+                                          </div>
+                                        </div>
+                                    
+                                    </div>
+                                </div>
+                                </div>
+            </div>
+
+            <div class="row">
+                
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Opération Bancaire </h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    <i class="fa fa-wrench"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-user">
+                                    <li><a href="#">Config option 1</a>
+                                    </li>
+                                    <li><a href="#">Config option 2</a>
+                                    </li>
+                                </ul>
+                                <a class="close-link">
+                                    <i class="fa fa-times"></i>
+                                </a>
+                            </div>
+                        </div>
+                    
+                        <div class="ibox-content">
+
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>Organisation</th>
+                                    <th>rib</th>
+                                    <th>Solde</th>
+                                    <th>Devise</th>
+                                    <th>Etat</th>
+                                    <th>Charger</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    <ng-container *ngFor="let c of comptes$|async">
+                                <tr>
+                                    <td>{{c.organisation}}</td>
+                                    <td>{{c.rib}}</td>
+                                    <td>{{c.solde}}</td>
+                                    <td>{{c.devise}}</td>
+                                    <td>{{c.etat}}</td>
+                                    <div *ngIf="c.solde>0">
+<td> <span ><h1><a (click)="open(content1)" >+</a></h1></span></td></div>
+<div *ngIf="c.solde<=0">
+<td> <span ><h1><a  (click)="open(content5)">+</a></h1></span></td> 
+</div>
+
+
+<ng-template #content1 >
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title"> Charger Votre Porte Monnaie </h4>
+      <button type="button" class="close pull-right" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form class="m-t" role="form"  #f="ngForm" (ngSubmit)="onSubmit(f,c)" >
+        <div class="form-group">
+          <label for="Prix">Saisir La Somme</label>
+          <div class="input-group">
+            <input id="Priw" class="form-control" placeholder="DNT"  name="prix" ngModel required #prix="ngModel">
+          </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit"  class="btn btn-outline-dark">Charger</button>
+          </div>
+      </form>
+    </div>
+ 
+  </ng-template>
+    
+                                </tr>
+                            </ng-container>
+                                </tbody>
+                            </table>
+                             
+                   
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+        <div class="row wrapper border-bottom white-bg page-heading">
+             
+                <div class="col-lg-2">
+
+                </div>
+            </div>
+      
+        <section id="contact" class="gray-section contact">
+                <div class="container">
+                    <div class="row m-b-lg">
+                        <div class="col-lg-12 text-center">
+                            <div class="navy-line"></div>
+                            <h1>Contact Us</h1>
+                            
+                        </div>
+                    </div>
+                    <div class="row m-b-lg">
+                        <div class="col-lg-3 col-lg-offset-3">
+                            <address>
+                                <strong><span class="navy">BetPay</span></strong><br>
+                                795 Folsom Ave, Suite 600<br>
+                                San Francisco, CA 94107<br>
+                                <abbr title="Phone">P:</abbr> (123) 456-7890
+                            </address>
+                        </div>
+                        <div class="col-lg-4">
+                            <p class="text-color">
+                             cette compagnie vous garantie des services en toute securité
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 text-center">
+                            <a class="btn btn-primary">Send us mail </a>
+                            <p class="m-t-sm">
+                                Or follow us on social platform
+                            </p>
+                            <ul class="list-inline social-icon">
+                                <li><a ><i class="fa fa-twitter"></i></a>
+                                </li>
+                                <li><a ><i class="fa fa-facebook"></i></a>
+                                </li>
+                                <li><a ><i class="fa fa-linkedin"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-offset-2 text-center m-t-lg m-b-lg">
+                            <p><strong>© 2018 BetPay</strong><br> COMPAGNIE TUNISIENNE DE PORTE_MONNAIE ÉLECTRONIUQE</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+
+

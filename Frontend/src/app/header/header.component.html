@@ -1,0 +1,112 @@
+
+<nav role="navigation">
+  <div>
+    <ul class="nav metismenu">
+      <li class="nav-header" (click)="open(content2)" style="color: rgb(80, 155, 226)">
+
+        <div *ngIf="user$ | async as user; else loading">
+          {{user.nom}}
+        </div>
+        User Of BetPay
+      </li>
+
+      <li class="nav-header" style="margin-left: 500px">
+        <a [routerLink]="['/Admin',(user$|async).id]">Acceuil</a>
+      </li>
+      <li (click)="open(content3)" class="nav-header">
+        <a>A propos</a>
+
+      </li>
+
+      <li (click)="open(content4)" class="nav-header">
+        <a>Aide ?</a>
+      </li>
+
+
+
+
+      <li class="nav-header">
+        <a class="dropdown-toggle count-info" data-toggle="dropdown" [routerLink]="['/Notifications',id]">
+          <i class="fa fa-bell"></i>
+          <span class="label label-primary">{{nbnotif$|async}}</span>
+        </a>
+      </li>
+      <li class="nav-header" style="margin-right: 0px">
+        <a [routerLink]="['/']">
+          <i class="fa fa-sign-out"></i> Log out
+        </a>
+      </li>
+    </ul>
+
+  </div>
+
+
+</nav>
+<ng-template #content2>
+  <div class="modal-header">
+
+    <h4 class="modal-title" id="modal-basic-title"> Bienvenu Dans Notre PLatforme </h4>
+    <button type="button" class="close pull-right" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Votre nom: {{(user$|async).nom}}</p>
+
+    <p>Votre prenom: {{(user$|async).prenom}}</p>
+
+    <p>Votre Adresse Mail: {{(user$|async).mail}}</p>
+
+    <p>Numero Porte_Monnaie: {{(pm$|async).numpm}}</p>
+    <p>Solde Du Porte_MOnnaie: {{(pm$|async).solde}} </p>
+
+  </div>
+
+</ng-template>
+<ng-template #content3>
+  <div class="modal-header">
+
+    <h4 class="modal-title" id="modal-basic-title"> À Propos </h4>
+    <button type="button" class="close pull-right" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>
+      BetPay est un service de paiement en ligne qui permet de payer des achats, de recevoir des paiements, ou d’envoyer et de
+      recevoir de l’argent. Pour bénéficier de ces services, une personne doit créer un compte puis transmettre diverses
+      coordonnées bancaires à BetPay, telles que le numéro de carte de paiement. Par la suite, les transactions sont effectuées
+      sans avoir à recommuniquer ses coordonnées bancaires, une adresse de courrier électronique et un mot de passe étant
+      suffisants.
+    </p>
+
+  </div>
+
+</ng-template>
+<ng-template #content4>
+  <div class="modal-header">
+
+    <h4 class="modal-title" id="modal-basic-title"> Bienvenu Dans Notre PLatforme </h4>
+    <button type="button" class="close pull-right" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>
+      Notre platforme offre plusieurs services à ces utilisateurs :
+      <br> * Elle vous permet d'attacher vos comptes bancaires à votre porte_monnaie
+      <a [routerLink]="['/AddCarte',id]">ici</a>.Attention un compte banciare ne peut pas être attaché qu'à un seul porte_monnaie.
+      <br> * Elle vous permet de charger votre porte_monnaie à partir de vos comptes bancaires
+      <a [routerLink]="['/AddMoney',id]">ici</a>.
+      <br> * Elle vous permet d'effectuer des versements:
+      <a [routerLink]="['/SendMoney',id]">ici</a>.
+      <br> * Elle vous permet d'effectuer des demandes de virement:
+      <a [routerLink]="['/Charger',id]">ici</a>.
+      <br> * Elle vous permet d'effectuer de décharger votre porte_monnaie dans vos comptes bancaires .
+      <br> etc...
+
+    </p>
+
+  </div>
+
+</ng-template>

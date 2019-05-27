@@ -1,0 +1,217 @@
+
+    <div>
+        <app-header></app-header>
+        <div class="gray-bg">
+            <div class="row wrapper border-bottom white-bg page-heading">
+
+                <div class="col-lg-2">
+
+                </div>
+            </div>
+
+            <div class="wrapper wrapper-content">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <span class="label label-warning pull-right">
+                                    <li>
+                                        <a [routerLink]="['/AddMoney',id]">Charger</a>
+                                    </li>
+                                </span>
+                                <span class="label label-warning pull-right">
+                                    <li>
+                                        <a (click)="open(content1)" style="color:#4169E1">Décharger</a>
+                                    </li>
+                                </span>
+                                <h5>Votre solde du porte_monnaie</h5>
+                            </div>
+                            <div class="ibox-content">
+                                <div class="row">
+                                    <span class="label label-success pull-right">
+                                        <h1>
+                                            <a [routerLink]="['/AddMoney',id]">+</a>
+                                        </h1>
+                                    </span>
+                                    <div class="ibox-content">
+                                        <div *ngIf="pm$ | async as pm; else loading">
+
+                                            <h1 class="no-margins">{{pm.solde}}{{pm.devise}}</h1>
+                                        </div>
+                                        <small>Total</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ng-template #content1>
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="modal-basic-title"> Décharger Votre Porte Monnaie Dans Vos Comptes Bancaires </h4>
+                            <button type="button" class="close pull-right" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Organisation</th>
+                                        <th>Solde</th>
+                                        <th>Devise</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <ng-container *ngFor="let c of listbnk$|async">
+                                        <tr>
+                                            <td>{{c.organisation}}</td>
+                                            <td>{{c.solde}}</td>
+                                            <td>{{c.devise}}</td>
+                                        </tr>
+                                    </ng-container>
+                                </tbody>
+                            </table>
+
+                            <form class="m-t" role="form" #f="ngForm" (ngSubmit)="onSubmit(f)">
+                                <div class="form-group">
+
+                                    <label>Organisation</label>
+                                    <select class="form-control m-b" [(ngModel)]="value" name="id">
+                                        <option *ngFor="let  bnk of listbnk$|async" [value]="bnk.id">{{bnk.organisation}}</option>
+                                    </select>
+
+                                    <label for="Prix">Saisir La Somme à décharger</label>
+                                    <div class="input-group">
+                                        <input id="Priw" class="form-control" placeholder="DNT" name="solde" ngModel required #solde="ngModel">
+                                    </div>
+                                </div>
+                                <p id="message"></p>
+
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-outline-dark">Valider</button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </ng-template>
+
+                    <div class="col-lg-4">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <span class="label label-warning pull-right">
+                                    <li>
+                                        <a [routerLink]="['/AddCarte',id]">Attacher</a>
+                                    </li>
+                                </span>
+                            </div>
+                            <div class="ibox-content">
+                                <div class="row">
+                                    <span class="label label-success pull-right">
+                                        <h1>
+                                            <a [routerLink]="['/AddCarte',id]">+</a>
+                                        </h1>
+                                    </span>
+                                    <div class="ibox-content">
+                                        <div *ngIf="pm$ | async as pm; else loading">
+
+                                            <h3 class="no-margins">
+                                                <a [routerLink]="['/AddCarte',id]">Attachez vos comptes bancaires</a>
+                                            </h3>
+                                        </div>
+                                        <div>
+                                            <br>
+                                            <br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <span class="label label-warning pull-right">
+                                    <li>
+                                        <a [routerLink]="['/SendMoney',id]">Envoyer Monnaie</a>
+                                    </li>
+                                </span>
+                            </div>
+                            <div class="ibox-content">
+                                <div class="row">
+                                    <span class="label label-success pull-right">
+                                        <h1>
+                                            <a [routerLink]="['/SendMoney',id]">+</a>
+                                        </h1>
+                                    </span>
+                                    <div class="ibox-content">
+                                        <div *ngIf="pm$ | async as pm; else loading">
+
+                                            <h3 class="no-margins">
+                                                <a [routerLink]="['/SendMoney',id]">Envoyer de la monnaie</a>
+                                            </h3>
+                                        </div>
+                                        <div>
+                                            <br>
+                                            <br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-lg-12">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-content">
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Numero Transaction</th>
+                                                <th>Date</th>
+                                                <th>Type Transaction </th>
+                                                <th>Statut</th>
+                                                <th>Porte-monnaie debitant</th>
+                                                <th>Porte-monnaie creditant</th>
+                                                <th>Somme</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <ng-container *ngFor="let h of historiques$|async">
+                                                <tr>
+                                                    <td>{{h.id}}</td>
+                                                    <td>{{h.date}}</td>
+                                                    <td>{{h.type}}</td>
+                                                    <td>{{h.statut}}</td>
+                                                    <td>{{h.sourcedebitante.numpm}} </td>
+                                                    <td>{{h.sourcecreditante.numpm}} </td>
+                                                    <td>{{h.somme}}</td>
+
+                                                </tr>
+                                            </ng-container>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="row wrapper border-bottom white-bg page-heading">
+
+        <div class="col-lg-2">
+
+        </div>
+    </div>
+    <app-footer></app-footer>
+

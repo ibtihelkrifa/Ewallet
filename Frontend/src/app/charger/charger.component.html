@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+
+<!-- Mirrored from webapplayers.com/inspinia_admin-v2.7.1/form_basic.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 18 Apr 2018 19:18:39 GMT -->
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>INSPINIA | Basic Form</title>
+
+    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../assets/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="../../assets/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="../../assets/css/animate.css" rel="stylesheet">
+    <link href="../../assets/css/style.css" rel="stylesheet">
+
+    <link href="../../assets/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+        <app-header></app-header>
+
+
+
+        <div class="gray-bg">
+
+            <div class="row wrapper border-bottom white-bg page-heading">
+
+                <div class="col-lg-2">
+
+                </div>
+            </div>
+            <div class="wrapper wrapper-content animated fadeInRight">
+
+
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>Demander de la monnaie</h5>
+
+                            </div>
+                            <div class="ibox-content">
+                                <form method="get" class="form-horizontal" role="form" #f="ngForm" (ngSubmit)="onSubmit(f,id)">
+                                    <div class="hr-line-dashed"></div>
+
+
+
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">Numero du porte-monnaie du destinataire</label>
+
+                                        <div class="col-sm-10">
+                                            <input id="num" type="text" class="form-control" name="num" ngModel required #num="ngModel">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">Adresse Mail du destinataire</label>
+
+                                        <div class="col-sm-10">
+                                            <input id="mail" type="email" placeholder="xxx@zzz.yy" class="form-control" name="email" ngModel required #email="ngModel">
+                                        </div>
+                                    </div>
+
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="form-group">
+                                        <label class="col-lg-2 control-label">Somme de monnaie</label>
+
+                                        <div class="col-sm-10">
+                                            <input placeholder="TND" class="form-control" name="somme" ngModel required #somme="ngModel">
+                                        </div>
+                                        <p id="alert" style="color: #fa0000;"></p>
+
+                                    </div>
+
+
+                                    <p id="message" style="color: #fa0000"></p>
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="form-group">
+                                        <div class="col-sm-4 col-sm-offset-2">
+                                            <button class="btn btn-primary" type="submit">Envoyer</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row wrapper border-bottom white-bg page-heading">
+
+                <div class="col-lg-2">
+
+                </div>
+            </div>
+
+            <section id="contact" class="gray-section contact">
+                <div class="container">
+                    <div class="row m-b-lg">
+                        <div class="col-lg-12 text-center">
+                            <div class="navy-line"></div>
+                            <h1>Contact Us</h1>
+
+                        </div>
+                    </div>
+                    <div class="row m-b-lg">
+                        <div class="col-lg-3 col-lg-offset-3">
+                            <address>
+                                <strong>
+                                    <span class="navy">BetPay</span>
+                                </strong>
+                                <br> 795 Folsom Ave, Suite 600
+                                <br> San Francisco, CA 94107
+                                <br>
+                                <abbr title="Phone">P:</abbr> (123) 456-7890
+                            </address>
+                        </div>
+                        <div class="col-lg-4">
+                            <p class="text-color">
+                                cette compagnie vous garantie des services en toute securité
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 text-center">
+                            <a class="btn btn-primary">Send us mail </a>
+                            <p class="m-t-sm">
+                                Or follow us on social platform
+                            </p>
+                            <ul class="list-inline social-icon">
+                                <li>
+                                    <a>
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <i class="fa fa-linkedin"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-offset-2 text-center m-t-lg m-b-lg">
+                            <p>
+                                <strong>© 2018 BetPay</strong>
+                                <br> COMPAGNIE TUNISIENNE DE PORTE_MONNAIE ÉLECTRONIUQE</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+
+
+
+
+</body>
+
+
+<!-- Mirrored from webapplayers.com/inspinia_admin-v2.7.1/form_basic.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 18 Apr 2018 19:18:40 GMT -->
+
+</html>
